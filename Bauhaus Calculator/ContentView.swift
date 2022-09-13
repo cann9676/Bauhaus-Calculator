@@ -68,5 +68,30 @@ struct DarkButton: ButtonStyle {
             .background(
                 DarkBackground(isTapped: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 35))
                 )
+        
     }
+}
+
+enum CalcButton: String {
+    case one = "1"
+    case two = "2"
+    case three = "3"
+    case four = "4"
+    case five = "5"
+    case six = "6"
+    case seven = "7"
+    case eight = "8"
+    case zero = "0"
+    case add = "+"
+    case subtract = "-"
+    case divide = "/"
+    case multiple = "x"
+    case equal = "="
+    case clear = "A/C"
+    case decimal = "."
+    case percent = "%"
+    case negative = "-/+"
+    
+    
+    
 }
