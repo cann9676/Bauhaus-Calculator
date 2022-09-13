@@ -105,5 +105,13 @@ enum CalcButton: String {
             return Color.white
         }
     }
-    
+    //Button Colors
+}
+
+enum Operations {
+    case add, subtract, multiply, divide, none
+}
+
+struct CalculatorUI: View {
+    @State var value = "0"
 }
