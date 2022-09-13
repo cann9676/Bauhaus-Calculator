@@ -85,13 +85,25 @@ enum CalcButton: String {
     case add = "+"
     case subtract = "-"
     case divide = "/"
-    case multiple = "x"
+    case multiply = "x"
     case equal = "="
     case clear = "A/C"
     case decimal = "."
     case percent = "%"
     case negative = "-/+"
     
-    
+    var buttonColor: Color {
+        switch self
+        {
+        case .clear :
+            return .orange
+        case .add, .subtract, .multiply, .divide, .equal:
+            return .orange
+        case .negative, .percent:
+            return Color.white
+        default:
+            return Color.white
+        }
+    }
     
 }
