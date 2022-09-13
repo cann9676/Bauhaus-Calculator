@@ -59,3 +59,14 @@ struct DarkBackground<myShape: Shape>: View {
         }
     }
 }
+
+struct DarkButton: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .contentShape(RoundedRectangle(cornerRadius: 35))
+            .frame(width: 87, height: 85, alignment: .center)
+            .background(
+                DarkBackground(isTapped: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 35))
+                )
+    }
+}
