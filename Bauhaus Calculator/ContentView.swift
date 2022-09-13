@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        CalculatorUI()
+       // CalculatorUI()
+        let Virgil : String = "Calculator"
+        Text(#" "\#(Virgil)" "#)
+         //   .font(custom("Adobe Garamond Pro", size, 20))
+        //load in font
     }
 }
 
@@ -50,7 +54,7 @@ struct DarkBackground<myShape: Shape>: View {
                     .overlay(shape.stroke(LinearGradient(Color.darkStart, Color.darkEnd), lineWidth: 4))
                 
                     .shadow(color: Color.black.opacity(0.1), radius: 10, x: -10, y: -10)
-                    .shadow(color: Color.darkEnd, radius: <#T##CGFloat#>, x: <#T##CGFloat#>, y: <#T##CGFloat#>)
+                    .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
             }
         }
     }
