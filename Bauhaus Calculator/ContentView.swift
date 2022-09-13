@@ -32,3 +32,26 @@ extension LinearGradient {
 }
 
 //DarkBackgrounsButton
+struct DarkBackground<myShape: Shape>: View {
+    var isTapped: Bool
+    var shape: myShape
+    
+    var body: some View {
+        ZStack {
+            if isTapped {
+                shape
+                    .fill(LinearGradient(Color.darkEnd, Color.darkStart))
+                    .overlay(shape.stroke(LinearGradient(Color.darkStart, Color.darkEnd), lineWidth: 4))
+                
+                    .shadow(color: Color.darkStart, radius: 10, x: -5, y: -5)
+                    .shadow(color: Color.darkEnd, radius: 5, x: -5, y: -5)
+            } else {
+                shape.fill(LinearGradient(Color.darkStart, Color.darkEnd))
+                    .overlay(shape.stroke(LinearGradient(Color.darkStart, Color.darkEnd), lineWidth: 4))
+                
+                    .shadow(color: Color.black.opacity(0.1), radius: 10, x: -10, y: -10)
+                    .shadow(color: Color.darkEnd, radius: <#T##CGFloat#>, x: <#T##CGFloat#>, y: <#T##CGFloat#>)
+            }
+        }
+    }
+}
