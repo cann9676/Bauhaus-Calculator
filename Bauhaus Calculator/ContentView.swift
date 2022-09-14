@@ -9,11 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-       // CalculatorUI()
-        let Virgil : String = "Calculator"
-        Text(#" "\#(Virgil)" "#)
-         //   .font(custom("Adobe Garamond Pro", size, 20))
-        //load in font
+       CalculatorUI()
     }
 }
 
@@ -81,6 +77,7 @@ enum CalcButton: String {
     case six = "6"
     case seven = "7"
     case eight = "8"
+    case nine = "9"
     case zero = "0"
     case add = "+"
     case subtract = "-"
@@ -113,5 +110,65 @@ enum Operations {
 }
 
 struct CalculatorUI: View {
+    
     @State var value = "0"
+    @State var operationname = ""
+    @State var runningNumber = 0
+    @State var currentOperation: Operation = .none
+    
+    let button: [[CalcButton]] = [
+        [.clear, .negative, .percent, .divide],
+        [.seven, .eight, .nine, .multiply],
+        [.four, .five, .six, .subtract],
+        [.one, .two, .three, .add],
+        [.zero, .decimal, .equal],
+    ]
+    
+    var body: some View {
+        ZStack {
+            
+            LinearGradient(Color.darkStart, Color.darkEnd).edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Spacer()
+                
+                ZStack {
+                    
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundColor(Color("calcbg"))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 15).stroke(.black, lineWidth: 5)
+                        }
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Text(value)
+                            //.font(custom("digital-7", size: 100))
+                            .foregroundColor(.black)
+                            .frame( height: 200)
+                        
+                    }
+                    .offset(x: -10, y: -10)
+                    
+                    .padding(10)
+                    
+                    HStack {
+                        Image(systemName:  "play.fill")
+                            .foregroundColor(.black)
+                        //.font(custom("digital-7", size: 40))
+                        
+                        Spacer()
+                    }.padding()
+                        .offset(x: 0, y: 110)
+                    
+                }.padding()
+                
+                Spacer().frame(width: 0, height: 20)
+                
+                //Buttons
+            }
+            
+        }
+    }
 }
