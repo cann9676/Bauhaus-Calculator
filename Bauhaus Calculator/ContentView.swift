@@ -167,8 +167,45 @@ struct CalculatorUI: View {
                 Spacer().frame(width: 0, height: 20)
                 
                 //Buttons
+                ForEach(buttons, id: \.self) { row in
+                    HStack(spacing: 18) {
+                        ForEach(row, id: \.self) { item in
+                            Button(action: {
+                                self.didTap(button: item)
+                            }, label: {
+                                Text(item.rawValue)
+                                    .font(.system(size: 35))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(item.buttonColor)
+                                
+                                
+                            }).buttonStyle(DarkButton())
+                        }
+                    }
+                    .padding(.bottom, 3)
+                }
             }
-            
         }
     }
+    
+    func didTap(button: CalcButton) {
+        switch button {
+        case .add, .subtract, .multiply, .divide, .equal:
+            
+            if button == .add {
+                self.currentOperation = .add
+                self.runningNumber = Int(self.value) ?? 0
+                self.operationname = "ADD"
+            }
+            else if button == .subtract {
+                self.currentOperation = .subtract
+                self.runningNumber = Int(self.value) ?? 0
+                self.operationname = "SUBTRACT"
+            }
+            else if button == .multiply {
+                self.currentOperation = .multiply
+            }
+        }
+    }
+    
 }
