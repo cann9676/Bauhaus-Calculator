@@ -60,7 +60,7 @@ struct DarkButton: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .contentShape(Rectangle())
-            .frame(width: 87, height: 85, alignment: .center)
+            .frame(width: 75, height: 75, alignment: .center)
             .background(
                 DarkBackground(isTapped: configuration.isPressed, shape: Rectangle())
                 //Button Shape
@@ -95,17 +95,18 @@ enum CalcButton: String {
     var buttonColor: Color {
         switch self
         {
-        case .clear :
-            return Color.white
-        case .add, .subtract, .multiply, .divide, .equal:
-            return Color.white
-        case .negative, .percent:
-            return Color.white
+        case .add, .subtract, .multiply, .divide:
+            return Color.black
+        case .clear, .negative, .percent:
+            return Color.black
+        case  .equal:
+            return Color.black
         default:
-            return Color.white
+            return Color.black
+            
         }
     }
-    //Button Colors
+    //Button Text Colors
 }
 
 enum Operations {
@@ -156,23 +157,14 @@ struct CalculatorUI: View {
                             .padding(.trailing, 10)
                             .frame( height: 200)
                     } //Final Value Section
-                    .offset(x: -10, y: -10)
                     
+                    .offset(x: -10, y: -10)
                     .padding(10)
                     
-                    HStack {
-                        Image(systemName:  "play.fill")
-                            .foregroundColor(.black)
-                        //.font(custom("digital-7", size: 40))
-                        
-                        Spacer()
-                    }.padding()
-                        .offset(x: 0, y: 110)
-                    
-                }.padding()
-                
-                Spacer().frame(width: 0, height: 20)
-                
+                }
+               
+                Spacer()
+                    .frame(height: 2.0)
                 //Buttons
                 ForEach(button, id: \.self) { row in
                     HStack(spacing: 18) {
@@ -181,24 +173,24 @@ struct CalculatorUI: View {
                                 self.didTap(button: item)
                             }, label: {
                                 Text(item.rawValue)
-                                    .font(.system(size: 35))
+                                    .font(.system(size: 32))
                                     .fontWeight(.bold)
                                     .foregroundColor(item.buttonColor)
-                                
-                                
+                            
                             }).buttonStyle(DarkButton())
+                            
                         }
                     }
-                    .padding(.bottom, 3)
+                    
                     
                 }
                 
             }
             
         }
-        
+       
     }
-    
+
     func didTap(button: CalcButton) {
         switch button {
         case .add, .subtract, .multiply, .divide, .equal:
