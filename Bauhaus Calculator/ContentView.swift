@@ -128,20 +128,23 @@ struct CalculatorUI: View {
     ]
     
     var body: some View {
+      
+        
         ZStack {
-            
-            LinearGradient(Color.darkStart, Color.darkEnd).edgesIgnoringSafeArea(.all)
-            
+            //Background
+            Image("Background")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
-                
                 ZStack {
                     
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(Color("calcbg"))
+                    Divider()
                         .overlay {
                             RoundedRectangle(cornerRadius: 15).stroke(.black, lineWidth: 5)
+                            
                         }
+                    
                     
                     HStack {
                         Spacer()
@@ -186,9 +189,13 @@ struct CalculatorUI: View {
                         }
                     }
                     .padding(.bottom, 3)
+                    
                 }
+                
             }
+            
         }
+        
     }
     
     func didTap(button: CalcButton) {
