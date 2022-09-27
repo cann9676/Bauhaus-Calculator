@@ -56,21 +56,6 @@ struct DarkBackground<myShape: Shape>: View {
     }
 }
 
-struct DarkButton: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .contentShape(Rectangle())
-            .frame(width: 75, height: 75, alignment: .center)
-            .background(
-                DarkBackground(isTapped: configuration.isPressed, shape: Rectangle())
-                //Button Shape
-                )
-        
-        Spacer()
-    }
-    
-}
-
 enum CalcButton: String {
     case one = "1"
     case two = "2"
@@ -95,14 +80,14 @@ enum CalcButton: String {
     var buttonColor: Color {
         switch self
         {
-        case .add, .subtract, .multiply, .divide:
-            return Color.black
-        case .clear, .negative, .percent:
-            return Color.black
+        case .add, .subtract, .multiply:
+            return Color(UIColor(red: 235/255.0, green: 155/255.0, blue: 42/255.0, alpha: 1))
+        case .clear, .negative, .percent, .divide:
+            return Color(UIColor(red: 18/255.0, green: 103/255.0, blue: 193/255.0, alpha: 1))
         case  .equal:
-            return Color.black
+            return Color(UIColor(red: 248/255.0, green: 44/255.0, blue: 56/255.0, alpha: 1))
         default:
-            return Color.black
+            return Color(UIColor(red: 235/255.0, green: 155/255.0, blue: 42/255.0, alpha: 1))
             
         }
     }
@@ -129,8 +114,6 @@ struct CalculatorUI: View {
     ]
     
     var body: some View {
-      
-        
         ZStack {
             //Background
             Image("Background")
@@ -143,23 +126,24 @@ struct CalculatorUI: View {
                                height: 3,
                                alignment: .trailing)
                         .overlay(.black)
-                        .padding(.leading, 15.0)
-                        .padding(.top, 190.0)
+                        .padding(.leading, 11.0)
+                        .padding(.top, 160.0)
             
                     HStack {
                         Spacer()
                         Text(value)
+                        //needs custom font
                             .font(.title)
                             
                             .fontWeight(.bold)
                             .foregroundColor(.black)
-                            .padding(.top, 170.0)
+                            .padding(.top, 130.0)
                             .padding(.trailing, 10)
                             .frame( height: 200)
                     } //Final Value Section
                     
                     .offset(x: -10, y: -10)
-                    .padding(10)
+                    .padding()
                     
                 }
                
@@ -167,21 +151,31 @@ struct CalculatorUI: View {
                     .frame(height: 2.0)
                 //Buttons
                 ForEach(button, id: \.self) { row in
-                    HStack(spacing: 18) {
+                    HStack(spacing: 12) {
                         ForEach(row, id: \.self) { item in
                             Button(action: {
                                 self.didTap(button: item)
                             }, label: {
-                                Text(item.rawValue)
-                                    .font(.system(size: 32))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(item.buttonColor)
-                            
-                            }).buttonStyle(DarkButton())
+                                ZStack {
+                                    Text(item.rawValue)
+                                        .font(.system(size: 32))
+                                        .fontWeight(.bold)
+                                }
+                                .frame(
+                                        width: 80,
+                                        height: 80
+                                        )
+                                        .background(
+                                            item.buttonColor
+                                                .shadow(color: .gray, radius: 2, x: 0, y: 2))
+                                        //button design
+                                    .foregroundColor(.black)
+                                //text color
+                            })
                             
                         }
                     }
-                    
+                    .padding(.bottom, 3)
                     
                 }
                 
@@ -257,4 +251,12 @@ struct CalculatorUI: View {
         
     }
     
+}
+
+func buttonWidth(item: CalcButton) -> CGFloat {
+    return (UIScreen.main.bounds.width - (5*12)) / 4
+}
+
+func buttonHeight(item: CalcButton) -> CGFloat {
+    return (UIScreen.main.bounds.width - (5*12)) / 4
 }
