@@ -19,7 +19,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
+//Colors
 extension Color {
     static let darkStart = Color(red: 55 / 255, green: 60 / 255, blue: 65 / 255)
     static let darkEnd = Color(red: 25 / 255, green: 25 / 255, blue: 30 / 255)
@@ -59,13 +59,16 @@ struct DarkBackground<myShape: Shape>: View {
 struct DarkButton: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .contentShape(RoundedRectangle(cornerRadius: 35))
+            .contentShape(Rectangle())
             .frame(width: 87, height: 85, alignment: .center)
             .background(
-                DarkBackground(isTapped: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 35))
+                DarkBackground(isTapped: configuration.isPressed, shape: Rectangle())
+                //Button Shape
                 )
         
+        Spacer()
     }
+    
 }
 
 enum CalcButton: String {
