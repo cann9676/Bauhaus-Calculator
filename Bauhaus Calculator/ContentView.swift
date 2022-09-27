@@ -136,25 +136,26 @@ struct CalculatorUI: View {
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                Spacer()
                 ZStack {
-                    
                     Divider()
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 15).stroke(.black, lineWidth: 5)
-                            
-                        }
-                    
-                    
+                        .frame(width: 350,
+                               height: 3,
+                               alignment: .trailing)
+                        .overlay(.black)
+                        .padding(.leading, 15.0)
+                        .padding(.top, 190.0)
+            
                     HStack {
                         Spacer()
-                        
                         Text(value)
-                            //.font(custom("digital-7", size: 100))
+                            .font(.title)
+                            
+                            .fontWeight(.bold)
                             .foregroundColor(.black)
+                            .padding(.top, 170.0)
+                            .padding(.trailing, 10)
                             .frame( height: 200)
-                        
-                    }
+                    } //Final Value Section
                     .offset(x: -10, y: -10)
                     
                     .padding(10)
