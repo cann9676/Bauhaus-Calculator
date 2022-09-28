@@ -162,8 +162,11 @@ struct CalculatorUI: View {
                                         .fontWeight(.bold)
                                 }
                                 .frame(
-                                        width: 80,
-                                        height: 80
+                                        //width: 80,
+                                       // height: 80
+                                    width: self.buttonWidth(item: item),
+                                    height: self.buttonHeight(item: item)
+                                    
                                         )
                                         .background(
                                             item.buttonColor
@@ -253,12 +256,18 @@ struct CalculatorUI: View {
         
     }
     
+    func buttonWidth(item: CalcButton) -> CGFloat {
+        if item == .zero {
+            return ((UIScreen.main.bounds.width - (4*12)) / 4) * 2
+        }
+        
+        return (UIScreen.main.bounds.width - (5*12)) / 4
+    }
+
+    func buttonHeight(item: CalcButton) -> CGFloat {
+        return (UIScreen.main.bounds.width - (5*12)) / 4
+    }
+
 }
 
-func buttonWidth(item: CalcButton) -> CGFloat {
-    return (UIScreen.main.bounds.width - (5*12)) / 4
-}
 
-func buttonHeight(item: CalcButton) -> CGFloat {
-    return (UIScreen.main.bounds.width - (5*12)) / 4
-}
