@@ -122,11 +122,11 @@ struct CalculatorUI: View {
             VStack {
                 ZStack {
                     Divider()
-                        .frame(width: 350,
+                        .frame(width: 330,
                                height: 3,
                                alignment: .trailing)
                         .overlay(.black)
-                        .padding(.leading, 11.0)
+                        .padding(.leading, 24.0)
                         .padding(.top, 160.0)
             
                     HStack {
@@ -237,8 +237,10 @@ struct CalculatorUI: View {
         case.clear:
             self.value = "0"
             self.operationname = "CLEAR"
+       
         case .decimal, .negative, .percent:
             break
+       
         default:
             let number = button.rawValue
             if self.value == "0" {
