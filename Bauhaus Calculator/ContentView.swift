@@ -256,6 +256,7 @@ struct CalculatorUI: View {
         
     }
     
+    //Button Width
     func buttonWidth(item: CalcButton) -> CGFloat {
         if item == .zero {
             return ((UIScreen.main.bounds.width - (4*12)) / 4) * 2
