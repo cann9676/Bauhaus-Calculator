@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct ContentView: View {
     var body: some View {
@@ -99,20 +100,17 @@ enum Operation {
     case subtract
     case multiply
     case divide
+    case decimal
+    case percent
+    case negative
     case none
 }
 
 struct CalculatorUI: View {
     
-//    @State var value = "0.0"
-//    @State var operationname = ""
-//    @State var runningNumber = 0.0
-//    @State var currentOperation: Operations = .none
     @State private var displayedNumber: Double?
     @State private var previousNumber: Double?
     @State private var currentOperation: Operation?
-    
-    
     
     let button: [[CalcButton]] = [
         [.clear, .negative, .percent, .divide],
@@ -137,14 +135,14 @@ struct CalculatorUI: View {
                         .overlay(.black)
                         .padding(.leading, 24.0)
                         .padding(.top, 160.0)
-            
+                    
                     HStack {
                         Spacer()
                         //The int controls whether you see the decimal or not
                         Text("\(Double(displayedNumber ?? 0))")
                         //needs custom font
                             .font(.title)
-                            
+                        
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                             .padding(.top, 130.0)
@@ -156,7 +154,7 @@ struct CalculatorUI: View {
                     .padding()
                     
                 }
-               
+                
                 Spacer()
                     .frame(height: 2.0)
                 //Buttons
@@ -164,7 +162,7 @@ struct CalculatorUI: View {
                     HStack(spacing: 12) {
                         ForEach(row, id: \.self) { item in
                             Button(action: {
-                               didTap(button: item)
+                                didTap(button: item)
                             }, label: {
                                 ZStack {
                                     Text(item.rawValue)
@@ -172,17 +170,17 @@ struct CalculatorUI: View {
                                         .fontWeight(.bold)
                                 }
                                 .frame(
-                                        //width: 80,
-                                       // height: 80
+                                    //width: 80,
+                                    // height: 80
                                     width: buttonWidth(item: item),
                                     height: buttonHeight(item: item)
                                     
-                                        )
-                                        .background(
-                                            item.buttonColor
-                                                .shadow(color: .gray, radius: 2, x: 0, y: 2))
-                                        //button design
-                                    .foregroundColor(.black)
+                                )
+                                .background(
+                                    item.buttonColor
+                                        .shadow(color: .gray, radius: 2, x: 0, y: 2))
+                                //button design
+                                .foregroundColor(.black)
                                 //text color
                             })
                             
@@ -195,13 +193,13 @@ struct CalculatorUI: View {
             }
             
         }
-       
+        
     }
     
     
     
     //Funcs
-   
+    
     func typeNumber(_ num: Double) {
         if let currentNum = displayedNumber {
             displayedNumber = (currentNum * 10) + num
@@ -232,7 +230,7 @@ struct CalculatorUI: View {
         else {
             return
         }
-       
+        
         switch curOperation {
         case .add:
             displayedNumber = prevNumber + dispNumber
@@ -242,120 +240,70 @@ struct CalculatorUI: View {
             displayedNumber = prevNumber * dispNumber
         case .divide:
             displayedNumber = prevNumber / dispNumber
+        case .decimal:
+            break
+        case .percent:
+            break
+        case .negative:
+            break
         case .none:
             break
         }
-            previousNumber = nil
-            currentOperation = nil
-    
+        previousNumber = nil
+        currentOperation = nil
+        
     }
-
-
+    
+    
     func didTap(button: CalcButton) {
         switch button {
         case .add, .subtract, .multiply, .divide, .equal:
             
             if button == .add {
-//                self.currentOperation = .add
-//                self.runningNumber = Double(self.value) ?? 0
-//                self.operationname = "ADD"
                 setOperation(.add)
-                
             }
             else if button == .subtract {
-//                self.currentOperation = .subtract
-//                self.runningNumber = Doublent(self.value) ?? 0
-//                self.operationname = "SUBTRACT"
                 setOperation(.subtract)
             }
             else if button == .multiply {
-//                self.currentOperation = .multiply
-//                self.runningNumber = Double(self.value) ?? 0
-//                self.operationname = "MULTIPLY"
                 setOperation(.multiply)
             }
             else if button == .divide {
-//                self.currentOperation = .divide
-//                self.runningNumber = Double(self.value) ?? 0
-//                self.operationname = "DIVIDE"
                 setOperation(.divide)
             }
             else if button == .equal {
-                //                let runningValue = self.runningNumber
-                //                let currentValue = Int(self.value) ?? 0
-                //                switch self.currentOperation
                 equals()
             }
-                    
-//                case .add:
-//                    value = runningValue + currentValue
-//
-//                case .subtract:
-//                    value = runningValue - currentValue
-//
-//                case .multiply:
-//                    value = runningValue * currentValue
-//
-//                case .divide:
-//                    value = "runningValue / currentValue
-                
-//                case .none:
-//                    break
-        case .one:
-            typeNumber(1)
-        case .two:
-            typeNumber(2)
-        case .three:
-            typeNumber(3)
-        case .four:
-            typeNumber(4)
-        case .five:
-            typeNumber(5)
-        case .six:
-            typeNumber(6)
-        case .seven:
-            typeNumber(7)
-        case .eight:
-            typeNumber(8)
-        case .nine:
-            typeNumber(9)
-        case .zero:
-            typeNumber(0)
-        case .clear:
-            clear()
+                case .one:
+                   typeNumber(1)
+               case .two:
+                   typeNumber(2)
+               case .three:
+                   typeNumber(3)
+               case .four:
+                   typeNumber(4)
+               case .five:
+                   typeNumber(5)
+               case .six:
+                   typeNumber(6)
+               case .seven:
+                   typeNumber(7)
+               case .eight:
+                   typeNumber(8)
+               case .nine:
+                   typeNumber(9)
+               case .zero:
+                   typeNumber(0)
+               case .clear:
+                   clear()
+            break
         case .decimal:
-            //Need functionality
             break
         case .percent:
-            //Need functionality
             break
         case .negative:
-            //Need functionality
             break
         }
-             //   self.operationname = "EQUAL"
-            
-            
-//            if button != .equal {
-//                self.value = "0"
-//            }
-//        case.clear:
-//            self.value = "0"
-//            self.operationname = "CLEAR"
-//
-//        case .decimal, .negative, .percent:
-//            break
-//
-//        default:
-//            let number = button.rawValue
-//            if self.value == "0" {
-//                value = number
-//            }
-//            else {
-//                self.value = "\(self.value)\(number)"
-//            }
-        }
-        
     }
     
     //Button Width
@@ -366,10 +314,8 @@ struct CalculatorUI: View {
         
         return (UIScreen.main.bounds.width - (5*12)) / 4
     }
-
+    
     func buttonHeight(item: CalcButton) -> CGFloat {
         return (UIScreen.main.bounds.width - (5*12)) / 4
     }
-
-
-
+}
