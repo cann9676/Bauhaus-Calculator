@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import MathExpression
 
 struct ContentView: View {
     var body: some View {
@@ -319,3 +320,4 @@ struct CalculatorUI: View {
         return (UIScreen.main.bounds.width - (5*12)) / 4
     }
 }
+

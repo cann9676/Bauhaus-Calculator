@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FAB862C4484A93B54E0E311 /* Pods_Bauhaus_Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E96DC1982D1C8F9886B3D8BB /* Pods_Bauhaus_Calculator.framework */; };
 		837DC89728D0109A000C4C90 /* Bauhaus_CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837DC89628D0109A000C4C90 /* Bauhaus_CalculatorApp.swift */; };
 		837DC89928D0109A000C4C90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837DC89828D0109A000C4C90 /* ContentView.swift */; };
 		837DC89B28D0109B000C4C90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 837DC89A28D0109B000C4C90 /* Assets.xcassets */; };
@@ -14,11 +15,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A187AD211B25044B6901089 /* Pods-Bauhaus Calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus Calculator.release.xcconfig"; path = "Target Support Files/Pods-Bauhaus Calculator/Pods-Bauhaus Calculator.release.xcconfig"; sourceTree = "<group>"; };
 		837DC89328D0109A000C4C90 /* Bauhaus Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bauhaus Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		837DC89628D0109A000C4C90 /* Bauhaus_CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bauhaus_CalculatorApp.swift; sourceTree = "<group>"; };
 		837DC89828D0109A000C4C90 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		837DC89A28D0109B000C4C90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		837DC89D28D0109B000C4C90 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B2AD06FD7095EE7F6DB07239 /* Pods-Bauhaus Calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bauhaus Calculator.debug.xcconfig"; path = "Target Support Files/Pods-Bauhaus Calculator/Pods-Bauhaus Calculator.debug.xcconfig"; sourceTree = "<group>"; };
+		E96DC1982D1C8F9886B3D8BB /* Pods_Bauhaus_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bauhaus_Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +30,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FAB862C4484A93B54E0E311 /* Pods_Bauhaus_Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DE964486542EADBD66B2DF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2AD06FD7095EE7F6DB07239 /* Pods-Bauhaus Calculator.debug.xcconfig */,
+				6A187AD211B25044B6901089 /* Pods-Bauhaus Calculator.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		837DC88A28D0109A000C4C90 = {
 			isa = PBXGroup;
 			children = (
 				837DC89528D0109A000C4C90 /* Bauhaus Calculator */,
 				837DC89428D0109A000C4C90 /* Products */,
+				5DE964486542EADBD66B2DF2 /* Pods */,
+				AABC8C98B5B5D8B05F74AE79 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +84,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AABC8C98B5B5D8B05F74AE79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E96DC1982D1C8F9886B3D8BB /* Pods_Bauhaus_Calculator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 837DC8A128D0109B000C4C90 /* Build configuration list for PBXNativeTarget "Bauhaus Calculator" */;
 			buildPhases = (
+				BAA824C3C24D9E6B901AAA6C /* [CP] Check Pods Manifest.lock */,
 				837DC88F28D0109A000C4C90 /* Sources */,
 				837DC89028D0109A000C4C90 /* Frameworks */,
 				837DC89128D0109A000C4C90 /* Resources */,
+				B1F5131B67CB7E7DC9C76A51 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B1F5131B67CB7E7DC9C76A51 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bauhaus Calculator/Pods-Bauhaus Calculator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bauhaus Calculator/Pods-Bauhaus Calculator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bauhaus Calculator/Pods-Bauhaus Calculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAA824C3C24D9E6B901AAA6C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bauhaus Calculator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		837DC88F28D0109A000C4C90 /* Sources */ = {
@@ -261,6 +330,7 @@
 		};
 		837DC8A228D0109B000C4C90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2AD06FD7095EE7F6DB07239 /* Pods-Bauhaus Calculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -296,6 +366,7 @@
 		};
 		837DC8A328D0109B000C4C90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A187AD211B25044B6901089 /* Pods-Bauhaus Calculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
