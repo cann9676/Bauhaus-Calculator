@@ -244,7 +244,8 @@ struct CalculatorUI: View {
         case .decimal:
             break
         case .percent:
-            break
+            displayedNumber = prevNumber / 100
+            //Not working
         case .negative:
             break
         case .none:
@@ -258,7 +259,7 @@ struct CalculatorUI: View {
     
     func didTap(button: CalcButton) {
         switch button {
-        case .add, .subtract, .multiply, .divide, .equal:
+        case .add, .subtract, .multiply, .divide, .equal, .percent:
             
             if button == .add {
                 setOperation(.add)
@@ -274,6 +275,9 @@ struct CalculatorUI: View {
             }
             else if button == .equal {
                 equals()
+            }
+            else if button == .percent {
+                setOperation(.percent)
             }
                 case .one:
                    typeNumber(1)
@@ -299,8 +303,6 @@ struct CalculatorUI: View {
                    clear()
             break
         case .decimal:
-            break
-        case .percent:
             break
         case .negative:
             break
